@@ -1,0 +1,12 @@
+{
+  "name": "ca-api-example",
+  "version": "0.0.1",
+  "description": "API example using Clean Architecture",
+  "author": "Jordan Denison <jordan.denison@clevertech.biz>",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker-compose up",
+    "test": "cd api; yarn test",
+    "preinstall": "cp -f ./.hooks/* ./.git/hooks/; chmod +x ./.git/hooks/*"
+  }
+}

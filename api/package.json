@@ -1,0 +1,38 @@
+{
+  "name": "ca-api-src-example",
+  "version": "0.0.1",
+  "description": "Implementation of API example using Clean Architecture",
+  "author": "Jordan Denison <jordan.denison@clevertech.biz>",
+  "main": "src/index.js",
+  "scripts": {
+    "coverage": "./node_modules/.bin/nyc report --reporter=html",
+    "lint": "standard --fix",
+    "start": "node --max_old_space_size=256 src/index.js",
+    "generate-docs": "apidoc -i src -o doc -e node_modules --line-ending=LF",
+    "start-dev": "nodemon -i doc",
+    "test": "nyc ava 'src/**/*.test.js' --verbose",
+    "test-dev": "NODE_ENV=test nyc ava 'src/**/*.test.js' --verbose && NODE_ENV=test yarn run test-cleanup",
+    "test-cleanup": "node src/test/cleanup",
+    "test-current": "NODE_ENV=test nyc ava 'src/**/*.current.test.js' --verbose && NODE_ENV=test yarn run test-cleanup"
+  },
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "argon2": "^0.15.0",
+    "ca-validation": "github:jordandenison/CA-validation",
+    "ca-rest-express-adapter": "github:jordandenison/CA-REST-express-adapter",
+    "ca-db-mongo-native-adapter": "github:jordandenison/CA-DB-mongo-native-adapter",
+    "config": "^1.21.0",
+    "jsonwebtoken": "^7.2.1",
+    "lodash": "^4.17.4",
+    "winston": "^2.3.0"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "nodemon": "^1.11.0",
+    "nyc": "^10.0.0",
+    "proxyquire": "^1.7.10",
+    "sinon": "^1.17.7",
+    "standard": "^8.6.0",
+    "supertest": "^2.0.1"
+  }
+}
